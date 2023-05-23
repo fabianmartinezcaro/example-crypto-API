@@ -1,6 +1,6 @@
 export default class UI{
 
-    mostrarPrecio(precioCripto){
+    mostrarInfo(precioCripto){
         console.log(precioCripto)
     }
 

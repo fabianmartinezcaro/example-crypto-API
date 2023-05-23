@@ -21,13 +21,13 @@ export function cargarPrecio(moneda, criptomoneda){
     console.log(moneda, criptomoneda)
 
     const KEY = '6f5c6ddacf6b9e5b94ee88530835eaf983fd783a9306ec1a68db9aaddfde1077';
-    const URL = `https://min-api.cryptocompare.com/data/price?fsym=${criptomoneda}&tsyms=${moneda}&api_key=${KEY}`;
+    const URL = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}&api_key=${KEY}`;
 
     fetch(URL)
         .then(respuesta => {
             return respuesta.json()
         })
-        .then(data => ui.mostrarPrecio(data))
+        .then(data => ui.mostrarInfo(data))
         .catch(error => error)
        
 
