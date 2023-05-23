@@ -1,5 +1,9 @@
 export default class UI{
 
+    mostrarPrecio(precioCripto){
+        console.log(precioCripto)
+    }
+
     mostrarAlerta(contenedor, mensaje, tipo){
         const alerta = document.createElement('P');
         alerta.textContent = mensaje;
