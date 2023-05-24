@@ -1,34 +1,30 @@
 import UI from "./classes/UI.js";
-import { moneda, criptomoneda, formulario } from "./selectores.js";
+import { moneda } from "./selectores.js";
 
 const ui = new UI;
 
+const obtenerCriptomonedas = criptomonedas => new Promise(resolve => {
+    resolve(criptomonedas);
+})
 
-export function validarFormulario(evento){
-    evento.preventDefault();
-    
-    if(moneda.value === '' || criptomoneda.value === ''){
-        ui.mostrarAlerta(formulario, 'Los campos son obligatorios', 'error');
-        return;
-    }
-
-    cargarPrecio(moneda.value, criptomoneda.value);
-
-}
-
-export function cargarPrecio(moneda, criptomoneda){
-
-    console.log(moneda, criptomoneda)
+export function cargarCriptomonedas(){
 
     const KEY = '6f5c6ddacf6b9e5b94ee88530835eaf983fd783a9306ec1a68db9aaddfde1077';
-    const URL = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}&api_key=${KEY}`;
+    const URL = `https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=CLP&api_key=${KEY}`;
 
     fetch(URL)
         .then(respuesta => {
             return respuesta.json()
         })
-        .then(data => ui.mostrarInfo(data))
-        .catch(error => error)
-       
+        .then(resultado => obtenerCriptomonedas(resultado.Data))
+        .then(criptomonedas => console.log(criptomonedas))
 
+}
+
+export function selectCriptomoneda(criptomonedas){
+    criptomonedas.forEach(cripto => {
+        const {FullName, Name} = cripto.CoinInfo;
+        ui.mostrarCriptomonedas(FullName, Name);
+        // NO SE MUESTRAN LAS OPCIONES
+    });
 }

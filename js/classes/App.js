@@ -1,5 +1,5 @@
-import { validarFormulario } from "../funciones.js";
-import { formulario } from "../selectores.js";
+import { cargarCriptomonedas } from "../funciones.js";
+// import { formulario } from "../selectores.js";
 
 export default class App{
 
@@ -11,7 +11,7 @@ export default class App{
 
         document.addEventListener('DOMContentLoaded', () => {
 
-            formulario.addEventListener('submit', validarFormulario);
+            cargarCriptomonedas();
 
         })
 

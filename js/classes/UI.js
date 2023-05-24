@@ -1,7 +1,13 @@
+import { criptomoneda } from "../selectores.js";
+
 export default class UI{
 
-    mostrarInfo(precioCripto){
-        console.log(precioCripto)
+
+    mostrarCriptomonedas(FullName, Name){
+        const option = document.createElement('OPTION');
+        option.value = Name;
+        option.textContent = FullName;
+        criptomoneda.appendChild(option);
     }
 
     mostrarAlerta(contenedor, mensaje, tipo){
