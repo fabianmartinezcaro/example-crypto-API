@@ -17,7 +17,7 @@ export function cargarCriptomonedas(){
             return respuesta.json()
         })
         .then(resultado => obtenerCriptomonedas(resultado.Data))
-        .then(criptomonedas => console.log(criptomonedas))
+        .then(criptomonedas => selectCriptomoneda(criptomonedas))
 
 }
 
