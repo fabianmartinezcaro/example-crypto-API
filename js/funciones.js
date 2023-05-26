@@ -1,5 +1,5 @@
 import UI from "./classes/UI.js";
-import { criptomoneda, formulario, moneda } from "./selectores.js";
+import { formulario } from "./selectores.js";
 
 const ui = new UI;
 
@@ -38,17 +38,31 @@ export function selectCriptomoneda(criptomonedas){
 export function enviarCotizacion(evento){
     evento.preventDefault();
 
+    const {moneda, criptomoneda} = objCotizacion;
+
     if(moneda === '' || criptomoneda === ''){
         ui.mostrarAlerta(formulario, 'Los campos son obligatorios', 'error');
         return;
     }
 
-    objCotizacion = {moneda, criptomoneda}
-
-    crearcotizacion(objCotizacion);
+    consultarAPI();
 
 }
 
-function crearcotizacion(cotizacion){
-    console.log(cotizacion)
-}   
+export function leerValor(evento){
+    objCotizacion[evento.target.name] = evento.target.value;
+}  
+
+
+function consultarAPI(){
+
+    const {moneda, criptomoneda} = objCotizacion;
+    const KEY = '6f5c6ddacf6b9e5b94ee88530835eaf983fd783a9306ec1a68db9aaddfde1077';
+    const URL = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}&api_key=${KEY}`;
+
+    fetch(URL)
+        .then(respuesta => respuesta.json())
+        .then(resultado => ui.mostrarCotizacion(resultado.DISPLAY[criptomoneda][moneda]))
+        .catch(err => err)
+
+}
