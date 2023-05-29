@@ -6,26 +6,18 @@ export default class UI{
 
         this.limpiarHTML(resultado);
 
-        const {TOSYMBOL, PRICE, HIGHDAY, LOWDAY, LASTUPDATE, TOTALVOLUME24HOUR} = cotizacion;
-        
-        const divCotizacion = document.createElement('DIV');
-        divCotizacion.classList.add('resultado');
+        const {PRICE, HIGHDAY, LOWDAY, LASTUPDATE, TOTALVOLUME24HOUR} = cotizacion;
 
-        const price = document.createElement('H2');
-        price.classList.add('resultado', 'h2')
-        price.textContent = `Precio: ${PRICE}`;
+        resultado.innerHTML += `
+            <div>
+                <h1><span>Precio:</span>${PRICE}</h1>
+            </div>
+        `
 
-        const highDay = document.createElement('P');
-        highDay.classList.add('resultado', 'p')
-        highDay.textContent = `Valor Día/max: ${HIGHDAY}`;
-
-        const lowDay = document.createElement('P');
-        lowDay.textContent = `Valor Día/min: ${LOWDAY}`;
-
-        divCotizacion.appendChild(price);
-        divCotizacion.appendChild(highDay);
-        divCotizacion.appendChild(lowDay);
-        resultado.appendChild(divCotizacion);
+        // divCotizacion.appendChild(price);
+        // divCotizacion.appendChild(highDay);
+        // divCotizacion.appendChild(lowDay);
+        // resultado.appendChild(divCotizacion);
 
     }
 

@@ -10,46 +10,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <div class="container">
-        <div class="row">
-            <div class="one-half column">
-                <!-- <img src="img/cryptomonedas.png"> -->
-            </div>
-            <div class="one-half column">
-                <form id="formulario">
-                    <div class="selects">
-                        <div class="col">
-                            <label>Elige tu Moneda</label>
-                            <select
-                                class="u-full-width"
-                                id="moneda"
-                                name="moneda"
-                            >
-                                    <option value="">Elige tu moneda</option>
-                                    <option value="USD">Dolar Estadounidense</option>
-                                    <option value="CLP">Peso Chileno</option>
-                                    <option value="GBP">Libras</option>
-                                    <option value="EUR">Euros</option>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <label>Elige tu Criptomoneda</label>
-                            <select 
-                                class="u-full-width"
-                                id="criptomonedas"
-                                name="criptomoneda"
-                            >
-                                <option value="" disabled selected>Elige tu criptomoneda</option>
-                            </select>
-                        </div>
-                    </div>
-                    <input class="button-primary u-full-width" type="submit" value="COTIZAR"/>
+        <form class="formulario" id="formulario">
+                <div class="col">
+                    <label>Elige tu Moneda</label>
+                    <select
+                        class="u-full-width"
+                        id="moneda"
+                        name="moneda"
+                    >
+                            <option value="">Elige tu moneda</option>
+                            <option value="USD">Dolar Estadounidense</option>
+                            <option value="CLP">Peso Chileno</option>
+                            <option value="GBP">Libras</option>
+                            <option value="EUR">Euros</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Elige tu Criptomoneda</label>
+                    <select 
+                        class=""
+                        id="criptomonedas"
+                        name="criptomoneda"
+                    >
+                        <option value="" disabled selected>Elige tu criptomoneda</option>
+                    </select>
+                </div>
+            <input class="" type="submit" value="COTIZAR"/>
+        </form>
 
-                    <div id="resultado" class="resultado"></div>
-                </form>
-            </div>
-        </div>
+        <div class="container" id="resultado"></div>
+
     </div>
 
     <script src="js/app.js" type="module"></script>
