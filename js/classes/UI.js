@@ -3,21 +3,40 @@ import { criptomoneda, formulario, resultado } from "../selectores.js";
 export default class UI{
 
     mostrarCotizacion(cotizacion){
-
+        console.log(cotizacion)
         this.limpiarHTML(resultado);
 
-        const {PRICE, HIGHDAY, LOWDAY, LASTUPDATE, TOTALVOLUME24HOUR} = cotizacion;
+        const {PRICE, HIGHDAY, LOWDAY, LASTUPDATE, TOTALVOLUME24H} = cotizacion;
 
         resultado.innerHTML += `
-            <div>
-                <h1><span>Precio:</span>${PRICE}</h1>
-            </div>
-        `
+            <div class="price-container">
+                <h2 class="titulo-cotizacion">Valor del día:</h2>
+                <div class="price">
+                    <span class="span-price">Precio: </span>
+                    <h1 class="price-h1">${PRICE}</h1>
+                </div>
 
-        // divCotizacion.appendChild(price);
-        // divCotizacion.appendChild(highDay);
-        // divCotizacion.appendChild(lowDay);
-        // resultado.appendChild(divCotizacion);
+                <div class="secondary-info">
+                    <span class="span-sec-info">Ultima actualización: </span>
+                    <h1 class="info-h1"> ${LASTUPDATE}</h1>
+                </div>
+
+                <div class="secondary-info">
+                    <span class="span-sec-info">Valor max/día: </span>
+                    <h1 class="info-h1"> ${HIGHDAY}</h1>
+                </div>
+
+                <div class="secondary-info">
+                    <span class="span-sec-info">Valor min/día: </span>
+                    <h1 class="info-h1"> ${LOWDAY}</h1>
+                </div>
+
+                <div class="secondary-info">
+                    <span class="span-sec-info">Volumen total del día: </span>
+                    <h1 class="info-h1"> ${TOTALVOLUME24H}</h1>
+                </div>
+            </div>
+        `;
 
     }
 
