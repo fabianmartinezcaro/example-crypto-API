@@ -1,6 +1,9 @@
 // FORMULARIO
 export const formulario = document.querySelector('#formulario');
 
+// CONTAINER ALERTAS
+export const containerAlertas = document.querySelector('#container-alertas')
+
 // SELECTOR DE MONEDA
 export const moneda = document.querySelector('#moneda');
 

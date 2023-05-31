@@ -1,5 +1,5 @@
 import UI from "./classes/UI.js";
-import { formulario } from "./selectores.js";
+import { containerAlertas, resultado } from "./selectores.js";
 
 const ui = new UI;
 
@@ -17,7 +17,7 @@ const obtenerCriptomonedas = criptomonedas => new Promise(resolve => {
 export function cargarCriptomonedas(){
 
     const KEY = '6f5c6ddacf6b9e5b94ee88530835eaf983fd783a9306ec1a68db9aaddfde1077';
-    const URL = `https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD&api_key=${KEY}`;
+    const URL = `https://min-api.cryptocompare.com/data/top/mktcapfull?limit=20&tsym=USD&api_key=${KEY}`;
 
     fetch(URL)
         .then(respuesta => {
@@ -41,7 +41,7 @@ export function enviarCotizacion(evento){
     const {moneda, criptomoneda} = objCotizacion;
 
     if(moneda === '' || criptomoneda === ''){
-        ui.mostrarAlerta(formulario, 'Los campos son obligatorios', 'error');
+        ui.mostrarAlerta(containerAlertas, 'Los campos son obligatorios', 'alerta');
         return;
     }
 
@@ -59,6 +59,12 @@ function consultarAPI(){
     const {moneda, criptomoneda} = objCotizacion;
     const KEY = '6f5c6ddacf6b9e5b94ee88530835eaf983fd783a9306ec1a68db9aaddfde1077';
     const URL = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}&api_key=${KEY}`;
+
+    if(resultado.innerHTML.trim() !== ''){
+        console.log('asf');
+    }else{
+        ui.mostrarSpinner();
+    }
 
     fetch(URL)
         .then(respuesta => respuesta.json())

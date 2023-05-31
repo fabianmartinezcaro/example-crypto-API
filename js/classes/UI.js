@@ -7,7 +7,8 @@ export default class UI{
         this.limpiarHTML(resultado);
 
         const {PRICE, HIGHDAY, LOWDAY, LASTUPDATE, TOTALVOLUME24H} = cotizacion;
-
+        const modLASTUPDATE = LASTUPDATE.replace('Just now', 'En este momento') || LASTUPDATE.replace('min ago', 'minutos atras');
+        
         resultado.innerHTML += `
             <div class="price-container">
                 <h2 class="titulo-cotizacion">Valor del día:</h2>
@@ -18,7 +19,7 @@ export default class UI{
 
                 <div class="secondary-info">
                     <span class="span-sec-info">Ultima actualización: </span>
-                    <h1 class="info-h1"> ${LASTUPDATE}</h1>
+                    <h1 class="info-h1"> ${modLASTUPDATE}</h1>
                 </div>
 
                 <div class="secondary-info">
@@ -37,7 +38,16 @@ export default class UI{
                 </div>
             </div>
         `;
+        
 
+    }
+
+    mostrarAlgo(){
+        const div = document.createElement('DIV')
+        div.classList.add('price-container')
+        div.textContent = 'NADAAAA JAJAA';
+
+        resultado.appendChild(div)
     }
 
     mostrarCriptomonedas(FullName, Name){
@@ -48,22 +58,43 @@ export default class UI{
     }
 
     mostrarAlerta(contenedor, mensaje, tipo){
-        const alerta = document.createElement('P');
-        alerta.textContent = mensaje;
-        let condicionCumplida = false;
 
-        if(tipo === 'error'){
-            alerta.classList.add('error');
-            contenedor.appendChild(alerta);
-            condicionCumplida = true;
-        }
+        const alertaDIV = document.querySelector('.alerta');
 
-        if(condicionCumplida){
-            setTimeout(() => {
-                alerta.remove();
-            }, 3000);
+        if(!alertaDIV){
+
+            const alerta = document.createElement('P');
+            alerta.textContent = mensaje;
+            let condicionCumplida = false;
+
+            if(tipo === 'alerta'){
+                alerta.classList.add('alerta');
+                contenedor.appendChild(alerta);
+                condicionCumplida = true;
+            }
+    
+            if(condicionCumplida){
+                setTimeout(() => {
+                    alerta.remove();
+                }, 3000);
+            }
         }
     }   
+
+    mostrarSpinner(){
+        const spinner = document.createElement('DIV');
+        spinner.classList.add('sk-folding-cube');
+
+        spinner.innerHTML = `
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+        `;
+
+        resultado.appendChild(spinner);
+
+    }
 
     limpiarHTML(contenedor){
 

@@ -15,7 +15,7 @@
 <body>
     <div class="container">
         <form class="formulario" id="formulario">
-            <h2>Cotiza tu criptomoneda: </h2>
+            <h2 class="titulo-formulario">Cotiza tu criptomoneda</h2>
                 <div class="col">
                     <label>Elige tu Moneda</label>
                     <select
@@ -23,7 +23,7 @@
                         id="moneda"
                         name="moneda"
                     >
-                            <option value="">Elige tu moneda</option>
+                            <option value="" disabled selected>Elige tu moneda</option>
                             <option value="USD">Dolar Estadounidense</option>
                             <option value="CLP">Peso Chileno</option>
                             <option value="GBP">Libras</option>
@@ -47,6 +47,11 @@
 
     </div>
 
+    <div class="alertas" id="container-alertas"></div>
+
+    <footer>
+        <div class=""></div>
+    </footer>
     <script src="js/app.js" type="module"></script>
     
 </body>
